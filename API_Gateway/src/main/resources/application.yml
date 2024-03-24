@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id : Order_Service
+            uri:
+              lb://Order_Service
+            predicates:
+              - Path=/Order_Service/**
+
+          - id : PRODUCT_SERVICE
+            uri:
+              http://localhost:8081/eureka/
+            predicates:
+              - Path=/api/product/**
